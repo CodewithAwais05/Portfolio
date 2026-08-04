@@ -145,17 +145,20 @@ Each project includes descriptions, technologies used, and direct links to GitHu
 ```text
 Portfolio/
 │
-├── index.html
-├── style.css
-├── script.js
-│
-├── assets/
-│   ├── images/
-│   ├── icons/
-│   └── screenshots/
-│
+├── 1.jpeg
+├── 2.jpeg
+|
+├── LICENSE
+|
 ├── Muhammad_Awais_Raza_Resume.pdf
-└── README.md
+├── OOP_Manual.pdf
+├── Technical_Report.pdf
+|
+├── README.md
+|
+├── index.html
+├── script.js
+└── style.css
 ```
 
 ---
