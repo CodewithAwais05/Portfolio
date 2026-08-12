@@ -1,500 +1,1514 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Awais Raza — AI Engineer</title>
-<meta name="description" content="Awais Raza — AI Engineer building intelligent, algorithm-driven systems with strong C, C++ and Data Structures & Algorithms fundamentals." />
-<meta property="og:title" content="Awais Raza — AI Engineer" />
-<meta property="og:description" content="AI Engineer building intelligent systems on strong C/C++ and DSA fundamentals." />
-<meta property="og:type" content="website" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/lucide@0.383.0/dist/umd/lucide.min.js"></script>
-<link rel="stylesheet" href="style.css" />
-</head>
-<body>
-<a href="#main" class="skip-link">Skip to content</a>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Muhammad Awais Raza - AI Engineer & Developer Portfolio. Building intelligent systems with C, C++, DSA, and AI/ML.">
+    <meta property="og:title" content="Awais Raza - AI Engineer">
+    <meta property="og:description" content="AI Engineer building intelligent, algorithm-driven systems.">
+    <meta property="og:type" content="website">
+    <title>Awais Raza | AI Engineer</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'space': ['"Space Grotesk"', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                        'mono': ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        'accent': '#6C5CE7',
+                        'accent2': '#00D2FF',
+                        'surface': '#121212',
+                        'card': '#1A1A1A',
+                        'border-c': '#2A2A2A',
+                        'muted': '#A0A0A0',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg: #0A0A0A;
+            --surface: #121212;
+            --card: #1A1A1A;
+            --border: #2A2A2A;
+            --text: #FFFFFF;
+            --muted: #A0A0A0;
+            --accent: #6C5CE7;
+            --accent2: #00D2FF;
+            --gradient: linear-gradient(135deg, #6C5CE7, #00D2FF);
+            --gradient-text: linear-gradient(135deg, #6C5CE7 0%, #00D2FF 50%, #6C5CE7 100%);
+        }
 
-<header class="nav" id="siteNav">
-  <div class="container nav-inner">
-    <a href="#home" class="logo"><span class="logo-mark">AR</span> Awais Raza</a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#home" data-nav>Home</a></li>
-      <li><a href="#about" data-nav>About</a></li>
-      <li><a href="#skills" data-nav>Skills</a></li>
-      <li><a href="#github" data-nav>GitHub</a></li>
-      <li><a href="#projects" data-nav>Projects</a></li>
-      <li><a href="#experience" data-nav>Experience</a></li>
-      <li><a href="#contact" data-nav>Contact</a></li>
-    </ul>
-    <a href="Muhammad_Awais_Raza_Resume.pdf" class="btn btn-outline btn-sm nav-cta" id="resumeBtn" target="_blank" rel="noopener" download>Download Resume</a>
-    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #2A2A2A #0A0A0A;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2A2A2A;
+            border-radius: 3px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            cursor: default;
+        }
+
+        /* Canvas Background */
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(18, 18, 18, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(108, 92, 231, 0.15);
+        }
+
+        .glass-card {
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(42, 42, 42, 0.6);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(108, 92, 231, 0.4);
+            box-shadow: 0 8px 40px rgba(108, 92, 231, 0.08);
+            transform: translateY(-2px);
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradientShift 4s ease infinite;
+        }
+        @keyframes gradientShift {
+            0%,
+            100% {
+                background-position: 0% center;
+            }
+            50% {
+                background-position: 200% center;
+            }
+        }
+
+        /* Glow effects */
+        .glow-purple {
+            box-shadow: 0 0 60px rgba(108, 92, 231, 0.15), 0 0 120px rgba(108, 92, 231, 0.05);
+        }
+        .glow-cyan {
+            box-shadow: 0 0 60px rgba(0, 210, 255, 0.12), 0 0 120px rgba(0, 210, 255, 0.04);
+        }
+
+        /* Monogram Badge */
+        .monogram-badge {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: #fff;
+            box-shadow: 0 0 40px rgba(108, 92, 231, 0.35), 0 0 80px rgba(0, 210, 255, 0.2);
+            animation: monogramPulse 3s ease-in-out infinite;
+            user-select: none;
+        }
+        @keyframes monogramPulse {
+            0%,
+            100% {
+                box-shadow: 0 0 40px rgba(108, 92, 231, 0.35), 0 0 80px rgba(0, 210, 255, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 60px rgba(108, 92, 231, 0.55), 0 0 110px rgba(0, 210, 255, 0.35);
+            }
+        }
+
+        /* Terminal */
+        .terminal-window {
+            background: #0D1117;
+            border: 1px solid #30363D;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(108, 92, 231, 0.1);
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .terminal-content {
+            font-size: 0.8rem;
+            line-height: 1.7;
+            color: #C9D1D9;
+            min-height: 200px;
+        }
+        .keyword {
+            color: #FF7B72;
+        }
+        .type {
+            color: #FFA657;
+        }
+        .func {
+            color: #D2A8FF;
+        }
+        .comment {
+            color: #8B949E;
+        }
+        .string {
+            color: #A5D6FF;
+        }
+        .number {
+            color: #79C0FF;
+        }
+        .cursor-blink {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: #6C5CE7;
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+            margin-left: 2px;
+            border-radius: 2px;
+        }
+        @keyframes blink {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Skill Bar */
+        .skill-bar-fill {
+            height: 6px;
+            border-radius: 3px;
+            background: var(--gradient);
+            background-size: 200% auto;
+            animation: gradientShift 3s ease infinite;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 0%;
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 {
+            transition-delay: 0.1s;
+        }
+        .reveal-delay-2 {
+            transition-delay: 0.2s;
+        }
+        .reveal-delay-3 {
+            transition-delay: 0.3s;
+        }
+        .reveal-delay-4 {
+            transition-delay: 0.4s;
+        }
+
+        /* Timeline */
+        .timeline-line {
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #6C5CE7, #00D2FF, transparent);
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 12px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--gradient);
+            box-shadow: 0 0 20px rgba(108, 92, 231, 0.4);
+            z-index: 2;
+        }
+
+        /* Mobile Nav */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 75%;
+            max-width: 350px;
+            height: 100vh;
+            background: rgba(18, 18, 18, 0.97);
+            backdrop-filter: blur(30px);
+            z-index: 100;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 1px solid rgba(108, 92, 231, 0.2);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .mobile-nav.active {
+            right: 0;
+        }
+        .mobile-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 99;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .mobile-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* Back to top */
+        #backToTop {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 50;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(108, 92, 231, 0.4);
+        }
+        #backToTop.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+        #backToTop:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(108, 92, 231, 0.6);
+        }
+
+        /* Focus */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 1rem;
+            background: var(--accent);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 0 0 8px 8px;
+            z-index: 200;
+            transition: top 0.3s ease;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+        *:focus-visible {
+            outline: 2px solid #6C5CE7;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        /* Form */
+        .floating-label-group {
+            position: relative;
+        }
+        .floating-label-group input,
+        .floating-label-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(26, 26, 26, 0.6);
+            border: 1px solid #2A2A2A;
+            border-radius: 10px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        .floating-label-group input:focus,
+        .floating-label-group textarea:focus {
+            border-color: #6C5CE7;
+            box-shadow: 0 0 20px rgba(108, 92, 231, 0.1);
+            outline: none;
+        }
+        .floating-label-group label {
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            color: #A0A0A0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            font-size: 0.95rem;
+        }
+        .floating-label-group input:focus~label,
+        .floating-label-group textarea:focus~label,
+        .floating-label-group input:not(:placeholder-shown)~label,
+        .floating-label-group textarea:not(:placeholder-shown)~label {
+            top: -0.5rem;
+            left: 0.8rem;
+            font-size: 0.75rem;
+            color: #6C5CE7;
+            background: #121212;
+            padding: 0 0.4rem;
+            border-radius: 4px;
+        }
+        .error-msg {
+            color: #E74C3C;
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+        .error-msg.visible {
+            display: block;
+        }
+        .input-error {
+            border-color: #E74C3C !important;
+        }
+
+        @media (max-width: 768px) {
+            .terminal-content {
+                font-size: 0.65rem;
+                line-height: 1.5;
+            }
+            .monogram-badge {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+
+    <style>
+      /* Completely hide scrollbar for a sleek, invisible look */
+      ::-webkit-scrollbar {
+        width: 0px !important;
+        height: 0px !important;
+        display: none !important;
+      }
+      * {
+        scrollbar-width: none !important;
+      }
+
+      /* Ensure html background matches body to prevent white flashes */
+      html {
+        background-color: inherit;
+      }
+    </style>
+
+  </head>
+<body class="font-inter antialiased">
+
+    <!-- Skip to content -->
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- Particle Canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Mobile overlay -->
+    <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileNav()"></div>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobileNav">
+        <button onclick="closeMobileNav()" class="text-white text-2xl self-end mb-8 hover:text-accent transition-colors" aria-label="Close menu">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <nav class="flex flex-col gap-6 text-lg font-space">
+            <a href="#home" onclick="closeMobileNav()" class="text-white hover:text-accent transition-colors">Home</a>
+            <a href="#about" onclick="closeMobileNav()" class="text-white hover:text-accent transition-colors">About</a>
+            <a href="#skills" onclick="closeMobileNav()" class="text-white hover:text-accent transition-colors">Skills</a>
+            <a href="#projects" onclick="closeMobileNav()" class="text-white hover:text-accent transition-colors">Projects</a>
+            <a href="#experience" onclick="closeMobileNav()" class="text-white hover:text-accent transition-colors">Experience</a>
+            <a href="#contact" onclick="closeMobileNav()" class="text-white hover:text-accent transition-colors">Contact</a>
+        </nav>
+        <a href="Muhammad_Awais_Raza_Resume.pdf" download="Muhammad_Awais_Raza_Resume.pdf" class="mt-8 inline-block px-6 py-3 bg-gradient-to-br from-[#6C5CE7] to-[#00D2FF] rounded-full font-space font-semibold text-sm text-white text-center hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300">
+            Download Resume <i class="fa-solid fa-download ml-2"></i>
+        </a>
+    </div>
+
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!-- Logo -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-br from-[#6C5CE7] to-[#00D2FF] flex items-center justify-center font-space font-bold text-sm text-white shadow-lg shadow-purple-500/30 group-hover:shadow-purple-500/50 transition-all duration-300">
+                        AR
+                    </div>
+                    <span class="font-space font-semibold text-white hidden sm:block">Awais Raza</span>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden lg:flex items-center gap-8 font-space text-sm" id="desktopNav">
+                    <a href="#home" class="nav-link text-white hover:text-accent transition-colors">Home</a>
+                    <a href="#about" class="nav-link text-muted hover:text-white transition-colors">About</a>
+                    <a href="#skills" class="nav-link text-muted hover:text-white transition-colors">Skills</a>
+                    <a href="#projects" class="nav-link text-muted hover:text-white transition-colors">Projects</a>
+                    <a href="#experience" class="nav-link text-muted hover:text-white transition-colors">Experience</a>
+                    <a href="#contact" class="nav-link text-muted hover:text-white transition-colors">Contact</a>
+                </nav>
+
+                <!-- CTA + Hamburger -->
+                <div class="flex items-center gap-3">
+                    <a href="Muhammad_Awais_Raza_Resume.pdf" download="Muhammad_Awais_Raza_Resume.pdf" class="hidden md:inline-flex px-5 py-2.5 bg-gradient-to-br from-[#6C5CE7] to-[#00D2FF] rounded-full font-space font-semibold text-sm text-white hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:-translate-y-0.5">
+                        Resume <i class="fa-solid fa-download ml-2"></i>
+                    </a>
+                    <button onclick="toggleMobileNav()" class="lg:hidden text-white text-xl p-2 hover:text-accent transition-colors" aria-label="Open menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="relative z-10">
+
+        <!-- HERO -->
+        <section id="home" class="min-h-screen flex items-center pt-20 pb-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto w-full">
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                    <!-- Left -->
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="monogram-badge text-lg sm:text-xl">AR</div>
+                            <span class="font-mono text-muted text-sm tracking-widest uppercase">Hi, I am</span>
+                        </div>
+                        <h1 class="font-space font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight">
+                            <span class="text-white">Awais</span><br>
+                            <span class="gradient-text">Raza</span>
+                        </h1>
+                        <p class="text-lg sm:text-xl font-space font-semibold gradient-text">AI Engineer</p>
+                        <p class="text-muted text-base sm:text-lg max-w-lg leading-relaxed">
+                            AI Engineer building intelligent, algorithm-driven systems on strong C, C++, and Data Structures & Algorithms fundamentals — not just prompt calls. AI undergraduate at UET Lahore, shipping real apps in public.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="#projects" class="px-6 py-3 bg-gradient-to-br from-[#6C5CE7] to-[#00D2FF] rounded-full font-space font-semibold text-sm text-white hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300 hover:-translate-y-0.5">
+                                View Projects <i class="fa-solid fa-arrow-right ml-2"></i>
+                            </a>
+                            <a href="Muhammad_Awais_Raza_Resume.pdf" download="Muhammad_Awais_Raza_Resume.pdf" class="px-6 py-3 border border-[#2A2A2A] rounded-full font-space font-semibold text-sm text-white hover:border-accent hover:bg-accent/10 transition-all duration-300">
+                                Download Resume <i class="fa-solid fa-download ml-2"></i>
+                            </a>
+                        </div>
+                        <!-- Tech chips -->
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-3 py-1.5 bg-[#1A1A1A] border border-[#2A2A2A] rounded-full text-xs font-mono text-muted flex items-center gap-1.5"><i class="fa-solid fa-code text-accent text-xs"></i> C</span>
+                            <span class="px-3 py-1.5 bg-[#1A1A1A] border border-[#2A2A2A] rounded-full text-xs font-mono text-muted flex items-center gap-1.5"><i class="fa-solid fa-code text-accent2 text-xs"></i> C++</span>
+                            <span class="px-3 py-1.5 bg-[#1A1A1A] border border-[#2A2A2A] rounded-full text-xs font-mono text-muted flex items-center gap-1.5"><i class="fa-solid fa-diagram-project text-accent text-xs"></i> DSA</span>
+                            <span class="px-3 py-1.5 bg-[#1A1A1A] border border-[#2A2A2A] rounded-full text-xs font-mono text-muted flex items-center gap-1.5"><i class="fa-brands fa-html5 text-orange-400 text-xs"></i> HTML</span>
+                            <span class="px-3 py-1.5 bg-[#1A1A1A] border border-[#2A2A2A] rounded-full text-xs font-mono text-muted flex items-center gap-1.5"><i class="fa-brands fa-css3-alt text-blue-400 text-xs"></i> CSS</span>
+                            <span class="px-3 py-1.5 bg-[#1A1A1A] border border-[#2A2A2A] rounded-full text-xs font-mono text-muted flex items-center gap-1.5"><i class="fa-solid fa-brain text-accent2 text-xs"></i> AI/ML</span>
+                        </div>
+                    </div>
+                    <!-- Right: Terminal -->
+                    <div class="terminal-window reveal" id="heroTerminal">
+                        <div class="flex items-center gap-2 px-4 py-3 bg-[#161B22] border-b border-[#30363D]">
+                            <div class="terminal-dot bg-[#FF5F56]"></div>
+                            <div class="terminal-dot bg-[#FFBD2E]"></div>
+                            <div class="terminal-dot bg-[#27C93F]"></div>
+                            <span class="text-xs text-[#8B949E] ml-2 font-mono">binary_search.cpp</span>
+                        </div>
+                        <div class="p-4 sm:p-5 terminal-content text-xs sm:text-sm" id="terminalCode"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-14 reveal">
+                    <span class="font-mono text-accent text-xs tracking-widest uppercase">Who I Am</span>
+                    <h2 class="font-space font-bold text-3xl sm:text-4xl lg:text-5xl mt-3">Engineering intelligence from <span class="gradient-text">first principles</span></h2>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+                    <!-- Bio + Terminal Panel -->
+                    <div class="space-y-6 reveal reveal-delay-1">
+                        <p class="text-muted text-lg leading-relaxed">
+                            AI Engineer and undergraduate at UET Lahore, building an AI/ML career from the ground up — reaching for a data structure before reaching for a model or API. Currently shipping cross-platform AI apps, strengthening algorithmic foundations, and documenting the process publicly.
+                        </p>
+                        <!-- Terminal-style info panel -->
+                        <div class="terminal-window">
+                            <div class="flex items-center gap-2 px-4 py-2.5 bg-[#161B22] border-b border-[#30363D]">
+                                <div class="terminal-dot bg-[#FF5F56] w-3 h-3"></div>
+                                <div class="terminal-dot bg-[#FFBD2E] w-3 h-3"></div>
+                                <div class="terminal-dot bg-[#27C93F] w-3 h-3"></div>
+                                <span class="text-xs text-[#8B949E] ml-2 font-mono">about.json</span>
+                            </div>
+                            <div class="p-4 sm:p-5 font-mono text-xs sm:text-sm text-[#C9D1D9] space-y-1.5">
+                                <div><span class="text-[#FFA657]">"name"</span>: <span class="text-[#A5D6FF]">"Muhammad Awais Raza"</span>,</div>
+                                <div><span class="text-[#FFA657]">"role"</span>: <span class="text-[#A5D6FF]">"AI Engineer"</span>,</div>
+                                <div><span class="text-[#FFA657]">"focus"</span>: <span class="text-[#A5D6FF]">"AI/ML · DSA · Systems"</span>,</div>
+                                <div><span class="text-[#FFA657]">"location"</span>: <span class="text-[#A5D6FF]">"Lahore, Pakistan"</span>,</div>
+                                <div><span class="text-[#FFA657]">"email"</span>: <span class="text-[#A5D6FF]">"awaisrazaansari1111@gmail.com"</span>,</div>
+                                <div><span class="text-[#FFA657]">"studying"</span>: <span class="text-[#A5D6FF]">"BS Artificial Intelligence, UET Lahore (2025–Present)"</span></div>
+                            </div>
+                        </div>
+                        <a href="Muhammad_Awais_Raza_Resume.pdf" download="Muhammad_Awais_Raza_Resume.pdf" class="inline-flex px-6 py-3 border border-[#2A2A2A] rounded-full font-space font-semibold text-sm text-white hover:border-accent hover:bg-accent/10 transition-all duration-300">
+                            Download CV <i class="fa-solid fa-download ml-2"></i>
+                        </a>
+                    </div>
+                    <!-- Stats -->
+                    <div class="grid grid-cols-2 gap-4 reveal reveal-delay-2">
+                        <div class="glass-card rounded-2xl p-6 text-center">
+                            <div class="text-3xl sm:text-4xl font-space font-bold gradient-text" data-count="4" id="stat1">0</div>
+                            <p class="text-muted text-sm mt-2">Projects Shipped</p>
+                        </div>
+                        <div class="glass-card rounded-2xl p-6 text-center">
+                            <div class="text-3xl sm:text-4xl font-space font-bold gradient-text" data-count="150" id="stat2">0</div>
+                            <p class="text-muted text-sm mt-2">DSA Problems Solved</p>
+                        </div>
+                        <div class="glass-card rounded-2xl p-6 text-center">
+                            <div class="text-3xl sm:text-4xl font-space font-bold gradient-text" data-count="5" id="stat3">0</div>
+                            <p class="text-muted text-sm mt-2">Languages & Tools</p>
+                        </div>
+                        <div class="glass-card rounded-2xl p-6 text-center">
+                            <div class="text-3xl sm:text-4xl font-space font-bold gradient-text" data-count="2" id="stat4">0</div>
+                            <p class="text-muted text-sm mt-2">Years Coding</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-[#0D0D0D]">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-14 reveal">
+                    <span class="font-mono text-accent text-xs tracking-widest uppercase">Technical Skills</span>
+                    <h2 class="font-space font-bold text-3xl sm:text-4xl lg:text-5xl mt-3">Tools & <span class="gradient-text">Technologies</span></h2>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <!-- Skill Cards -->
+                    <div class="glass-card rounded-2xl p-6 reveal reveal-delay-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-[#6C5CE7]/20 flex items-center justify-center"><i class="fa-solid fa-microchip text-accent"></i></div>
+                            <h3 class="font-space font-semibold text-white">C</h3>
+                        </div>
+                        <p class="text-muted text-xs mb-3 leading-relaxed">Memory, pointers, and control flow — where I learned how computers actually work.</p>
+                        <div class="flex items-center gap-2">
+                            <div class="flex-1 h-1.5 bg-[#2A2A2A] rounded-full overflow-hidden"><div class="skill-bar-fill h-full rounded-full" data-width="85"></div></div>
+                            <span class="font-mono text-xs text-muted">85%</span>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 reveal reveal-delay-2">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-[#00D2FF]/20 flex items-center justify-center"><i class="fa-solid fa-code text-accent2"></i></div>
+                            <h3 class="font-space font-semibold text-white">C++</h3>
+                        </div>
+                        <p class="text-muted text-xs mb-3 leading-relaxed">OOP, STL, and performance-minded systems programming for real applications.</p>
+                        <div class="flex items-center gap-2">
+                            <div class="flex-1 h-1.5 bg-[#2A2A2A] rounded-full overflow-hidden"><div class="skill-bar-fill h-full rounded-full" data-width="90"></div></div>
+                            <span class="font-mono text-xs text-muted">90%</span>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 reveal reveal-delay-3">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-[#6C5CE7]/20 flex items-center justify-center"><i class="fa-solid fa-diagram-project text-accent"></i></div>
+                            <h3 class="font-space font-semibold text-white">DSA</h3>
+                        </div>
+                        <p class="text-muted text-xs mb-3 leading-relaxed">Data Structures & Algorithms in C++ — the toolkit behind every efficient solution.</p>
+                        <div class="flex items-center gap-2">
+                            <div class="flex-1 h-1.5 bg-[#2A2A2A] rounded-full overflow-hidden"><div class="skill-bar-fill h-full rounded-full" data-width="88"></div></div>
+                            <span class="font-mono text-xs text-muted">88%</span>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 reveal reveal-delay-4">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-[#00D2FF]/20 flex items-center justify-center"><i class="fa-solid fa-brain text-accent2"></i></div>
+                            <h3 class="font-space font-semibold text-white">AI/ML</h3>
+                        </div>
+                        <p class="text-muted text-xs mb-3 leading-relaxed">Applied LLM integration, agentic app design, and foundational ML coursework.</p>
+                        <div class="flex items-center gap-2">
+                            <div class="flex-1 h-1.5 bg-[#2A2A2A] rounded-full overflow-hidden"><div class="skill-bar-fill h-full rounded-full" data-width="75"></div></div>
+                            <span class="font-mono text-xs text-muted">75%</span>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 reveal reveal-delay-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-orange-400/20 flex items-center justify-center"><i class="fa-brands fa-html5 text-orange-400"></i></div>
+                            <h3 class="font-space font-semibold text-white">HTML</h3>
+                        </div>
+                        <p class="text-muted text-xs mb-3 leading-relaxed">Semantic, accessible markup as the backbone of every interface I build.</p>
+                        <div class="flex items-center gap-2">
+                            <div class="flex-1 h-1.5 bg-[#2A2A2A] rounded-full overflow-hidden"><div class="skill-bar-fill h-full rounded-full" data-width="80"></div></div>
+                            <span class="font-mono text-xs text-muted">80%</span>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 reveal reveal-delay-2">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-blue-400/20 flex items-center justify-center"><i class="fa-brands fa-css3-alt text-blue-400"></i></div>
+                            <h3 class="font-space font-semibold text-white">CSS</h3>
+                        </div>
+                        <p class="text-muted text-xs mb-3 leading-relaxed">Responsive, animated layouts that make functional software feel polished.</p>
+                        <div class="flex items-center gap-2">
+                            <div class="flex-1 h-1.5 bg-[#2A2A2A] rounded-full overflow-hidden"><div class="skill-bar-fill h-full rounded-full" data-width="78"></div></div>
+                            <span class="font-mono text-xs text-muted">78%</span>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 reveal reveal-delay-3">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-teal-400/20 flex items-center justify-center"><i class="fa-solid fa-mobile-screen text-teal-400"></i></div>
+                            <h3 class="font-space font-semibold text-white">Flutter & Capacitor</h3>
+                        </div>
+                        <p class="text-muted text-xs mb-3 leading-relaxed">Cross-platform mobile apps backed by Firebase and native Android tooling.</p>
+                        <div class="flex items-center gap-2">
+                            <div class="flex-1 h-1.5 bg-[#2A2A2A] rounded-full overflow-hidden"><div class="skill-bar-fill h-full rounded-full" data-width="70"></div></div>
+                            <span class="font-mono text-xs text-muted">70%</span>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 reveal reveal-delay-4">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-pink-400/20 flex items-center justify-center"><i class="fa-solid fa-square-root-variable text-pink-400"></i></div>
+                            <h3 class="font-space font-semibold text-white">Math for AI</h3>
+                        </div>
+                        <p class="text-muted text-xs mb-3 leading-relaxed">Calculus and Linear Algebra as the language underneath machine learning.</p>
+                        <div class="flex items-center gap-2">
+                            <div class="flex-1 h-1.5 bg-[#2A2A2A] rounded-full overflow-hidden"><div class="skill-bar-fill h-full rounded-full" data-width="72"></div></div>
+                            <span class="font-mono text-xs text-muted">72%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-[#0D0D0D]">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-10 reveal">
+                    <span class="font-mono text-accent text-xs tracking-widest uppercase">Portfolio</span>
+                    <h2 class="font-space font-bold text-3xl sm:text-4xl lg:text-5xl mt-3">Featured <span class="gradient-text">Projects</span></h2>
+                </div>
+                <!-- Filter -->
+                <div class="flex flex-wrap justify-center gap-2 mb-10 reveal reveal-delay-1" id="projectFilters">
+                    <button data-filter="all" class="filter-btn active px-4 py-2 rounded-full font-mono text-xs border border-accent bg-accent/10 text-white transition-all">All</button>
+                    <button data-filter="ai" class="filter-btn px-4 py-2 rounded-full font-mono text-xs border border-[#2A2A2A] text-muted hover:border-accent hover:text-white transition-all">AI Projects</button>
+                    <button data-filter="dsa" class="filter-btn px-4 py-2 rounded-full font-mono text-xs border border-[#2A2A2A] text-muted hover:border-accent hover:text-white transition-all">DSA</button>
+                    <button data-filter="cpp" class="filter-btn px-4 py-2 rounded-full font-mono text-xs border border-[#2A2A2A] text-muted hover:border-accent hover:text-white transition-all">Algorithms</button>
+                    <button data-filter="web" class="filter-btn px-4 py-2 rounded-full font-mono text-xs border border-[#2A2A2A] text-muted hover:border-accent hover:text-white transition-all">Web</button>
+                    <button data-filter="mobile" class="filter-btn px-4 py-2 rounded-full font-mono text-xs border border-[#2A2A2A] text-muted hover:border-accent hover:text-white transition-all">Mobile</button>
+                </div>
+                <!-- Project Cards -->
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" id="projectGrid">
+                    <div class="glass-card rounded-2xl p-6 project-card" data-category="ai mobile">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#6C5CE7]/30 to-[#00D2FF]/30 flex items-center justify-center mb-4 text-2xl"><i class="fa-solid fa-robot gradient-text"></i></div>
+                        <h3 class="font-space font-semibold text-white mb-2">Awais AI</h3>
+                        <p class="text-muted text-sm mb-4 leading-relaxed">Capacitor/Ionic Android chat app with dual Claude + Grok API support, built like a personal ChatGPT.</p>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="px-2.5 py-1 bg-[#6C5CE7]/15 rounded-full text-xs font-mono text-accent">AI</span>
+                            <span class="px-2.5 py-1 bg-[#00D2FF]/15 rounded-full text-xs font-mono text-accent2">Ionic</span>
+                            <span class="px-2.5 py-1 bg-green-400/15 rounded-full text-xs font-mono text-green-400">Android</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://github.com/CodewithAwais05" target="_blank" rel="noopener" class="text-muted hover:text-white transition-colors text-lg" aria-label="View on GitHub"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 project-card" data-category="cpp dsa">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#6C5CE7]/30 to-[#00D2FF]/30 flex items-center justify-center mb-4 text-2xl"><i class="fa-solid fa-laptop-code gradient-text"></i></div>
+                        <h3 class="font-space font-semibold text-white mb-2">CPP Programming Labs</h3>
+                        <p class="text-muted text-sm mb-4 leading-relaxed">Collection of C++ exercises and labs for practice and skill development.</p>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="px-2.5 py-1 bg-[#6C5CE7]/15 rounded-full text-xs font-mono text-accent">C++</span>
+                            <span class="px-2.5 py-1 bg-yellow-400/15 rounded-full text-xs font-mono text-yellow-400">Programming</span>
+                            <span class="px-2.5 py-1 bg-teal-400/15 rounded-full text-xs font-mono text-teal-400">Education</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://github.com/CodewithAwais05" target="_blank" rel="noopener" class="text-muted hover:text-white transition-colors text-lg" aria-label="View on GitHub"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 project-card" data-category="ai cpp">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#6C5CE7]/30 to-[#00D2FF]/30 flex items-center justify-center mb-4 text-2xl"><i class="fa-solid fa-comment-dots gradient-text"></i></div>
+                        <h3 class="font-space font-semibold text-white mb-2">QT-based AI Chatbot</h3>
+                        <p class="text-muted text-sm mb-4 leading-relaxed">C++ desktop AI chatbot built with Qt, powered by Groq API — secure login, voice input, image/file sharing, persistent chat history.</p>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="px-2.5 py-1 bg-[#6C5CE7]/15 rounded-full text-xs font-mono text-accent">C++</span>
+                            <span class="px-2.5 py-1 bg-[#00D2FF]/15 rounded-full text-xs font-mono text-accent2">AI</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://github.com/CodewithAwais05" target="_blank" rel="noopener" class="text-muted hover:text-white transition-colors text-lg" aria-label="View on GitHub"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 project-card" data-category="ai cpp">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#6C5CE7]/30 to-[#00D2FF]/30 flex items-center justify-center mb-4 text-2xl"><i class="fa-solid fa-terminal gradient-text"></i></div>
+                        <h3 class="font-space font-semibold text-white mb-2">Nexus AI Chatbot</h3>
+                        <p class="text-muted text-sm mb-4 leading-relaxed">C++ desktop console-based chatbot with API integration, designed with OOP principles.</p>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="px-2.5 py-1 bg-[#6C5CE7]/15 rounded-full text-xs font-mono text-accent">C++</span>
+                            <span class="px-2.5 py-1 bg-[#00D2FF]/15 rounded-full text-xs font-mono text-accent2">AI</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://github.com/CodewithAwais05" target="_blank" rel="noopener" class="text-muted hover:text-white transition-colors text-lg" aria-label="View on GitHub"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 project-card" data-category="ai web">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#6C5CE7]/30 to-[#00D2FF]/30 flex items-center justify-center mb-4 text-2xl"><i class="fa-solid fa-globe gradient-text"></i></div>
+                        <h3 class="font-space font-semibold text-white mb-2">AI Virtual Assistant</h3>
+                        <p class="text-muted text-sm mb-4 leading-relaxed">Browser-based AI assistant with full chat UI using Puter.js, live on GitHub Pages.</p>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="px-2.5 py-1 bg-yellow-400/15 rounded-full text-xs font-mono text-yellow-400">JavaScript</span>
+                            <span class="px-2.5 py-1 bg-orange-400/15 rounded-full text-xs font-mono text-orange-400">HTML/CSS</span>
+                            <span class="px-2.5 py-1 bg-[#00D2FF]/15 rounded-full text-xs font-mono text-accent2">AI</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://github.com/CodewithAwais05" target="_blank" rel="noopener" class="text-muted hover:text-white transition-colors text-lg" aria-label="View on GitHub"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 project-card" data-category="dsa cpp">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#6C5CE7]/30 to-[#00D2FF]/30 flex items-center justify-center mb-4 text-2xl"><i class="fa-solid fa-sitemap gradient-text"></i></div>
+                        <h3 class="font-space font-semibold text-white mb-2">DSA in C++</h3>
+                        <p class="text-muted text-sm mb-4 leading-relaxed">Topic-organized repo of data structure/algorithm implementations with progress-tracking README.</p>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="px-2.5 py-1 bg-[#6C5CE7]/15 rounded-full text-xs font-mono text-accent">C++</span>
+                            <span class="px-2.5 py-1 bg-purple-400/15 rounded-full text-xs font-mono text-purple-400">DSA</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://github.com/CodewithAwais05" target="_blank" rel="noopener" class="text-muted hover:text-white transition-colors text-lg" aria-label="View on GitHub"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-10 reveal">
+                    <a href="https://github.com/CodewithAwais05" target="_blank" rel="noopener" class="inline-flex px-6 py-3 border border-[#2A2A2A] rounded-full font-space font-semibold text-sm text-white hover:border-accent hover:bg-accent/10 transition-all duration-300">
+                        View All Projects on GitHub <i class="fa-brands fa-github ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience" class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-14 reveal">
+                    <span class="font-mono text-accent text-xs tracking-widest uppercase">Career Path</span>
+                    <h2 class="font-space font-bold text-3xl sm:text-4xl lg:text-5xl mt-3">Work <span class="gradient-text">Experience</span></h2>
+                </div>
+                <div class="relative pl-12 sm:pl-16 space-y-10">
+                    <div class="timeline-line"></div>
+                    <div class="relative reveal reveal-delay-1">
+                        <div class="timeline-dot" style="top:4px;"></div>
+                        <div class="glass-card rounded-2xl p-6 ml-4">
+                            <span class="font-mono text-accent text-xs">Present</span>
+                            <h3 class="font-space font-semibold text-white text-lg mt-1">Independent AI App Developer</h3>
+                            <p class="text-muted text-sm">Self-directed / Build in Public</p>
+                            <p class="text-muted text-sm mt-2 leading-relaxed">Designing and shipping cross-platform AI apps (dual-model Android assistant, Flutter/Firebase departmental chat app), documenting on LinkedIn/GitHub.</p>
+                        </div>
+                    </div>
+                    <div class="relative reveal reveal-delay-2">
+                        <div class="timeline-dot" style="top:4px;"></div>
+                        <div class="glass-card rounded-2xl p-6 ml-4">
+                            <span class="font-mono text-accent text-xs">UET Lahore</span>
+                            <h3 class="font-space font-semibold text-white text-lg mt-1">Technical Writer</h3>
+                            <p class="text-muted text-sm">Technical Writing</p>
+                            <p class="text-muted text-sm mt-2 leading-relaxed">Authored a report comparing AI-assisted vs traditional software development. <a href="Technical_Report.pdf" target="_blank" rel="noopener" class="text-accent2 hover:underline">Read the report →</a></p>
+                        </div>
+                    </div>
+                    <div class="relative reveal reveal-delay-3">
+                        <div class="timeline-dot" style="top:4px;"></div>
+                        <div class="glass-card rounded-2xl p-6 ml-4">
+                            <span class="font-mono text-accent text-xs">Present</span>
+                            <h3 class="font-space font-semibold text-white text-lg mt-1">AI Content Creator</h3>
+                            <p class="text-muted text-sm">LinkedIn</p>
+                            <p class="text-muted text-sm mt-2 leading-relaxed">Ran a 30-day daily AI post series sharing insights and building an engaged audience.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section class="py-16 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[#0D0D0D]">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-14 reveal">
+                    <span class="font-mono text-accent text-xs tracking-widest uppercase">Education</span>
+                    <h2 class="font-space font-bold text-3xl sm:text-4xl lg:text-5xl mt-3">Academic <span class="gradient-text">Background</span></h2>
+                </div>
+                <div class="relative pl-12 sm:pl-16">
+                    <div class="timeline-line"></div>
+                    <div class="relative reveal">
+                        <div class="timeline-dot" style="top:4px;"></div>
+                        <div class="glass-card rounded-2xl p-6 ml-4">
+                            <span class="font-mono text-accent text-xs">2025 – Present</span>
+                            <h3 class="font-space font-semibold text-white text-lg mt-1">BS Artificial Intelligence</h3>
+                            <p class="text-muted text-sm">University of Engineering and Technology (UET), Lahore</p>
+                            <p class="text-muted text-sm mt-2 leading-relaxed">Coursework: C++, OOP, Data Structures & Algorithms, Calculus, Linear Algebra.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-14 reveal">
+                    <span class="font-mono text-accent text-xs tracking-widest uppercase">Get In Touch</span>
+                    <h2 class="font-space font-bold text-3xl sm:text-4xl lg:text-5xl mt-3">Let's Build Something <span class="gradient-text">Together</span></h2>
+                    <p class="text-muted mt-4 max-w-lg mx-auto">Open to AI/ML internships, collaborations, and interesting problems.</p>
+                </div>
+                <div class="grid lg:grid-cols-5 gap-10 reveal reveal-delay-1">
+                    <!-- Info -->
+                    <div class="lg:col-span-2 space-y-5">
+                        <a href="mailto:awaisrazaansari1111@gmail.com" class="flex items-center gap-3 group"><div class="w-10 h-10 rounded-lg bg-[#6C5CE7]/15 flex items-center justify-center"><i class="fa-solid fa-envelope text-accent"></i></div><span class="text-muted text-sm group-hover:text-white transition-colors">awaisrazaansari1111@gmail.com</span></a>
+                        <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg bg-[#00D2FF]/15 flex items-center justify-center"><i class="fa-solid fa-location-dot text-accent2"></i></div><span class="text-muted text-sm">Lahore, Pakistan</span></div>
+                        <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg bg-purple-400/15 flex items-center justify-center"><i class="fa-solid fa-graduation-cap text-purple-400"></i></div><span class="text-muted text-sm">UET Lahore</span></div>
+                        <div class="flex gap-3 pt-4">
+                            <a href="https://github.com/CodewithAwais05" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-[#1A1A1A] border border-[#2A2A2A] flex items-center justify-center text-muted hover:text-white hover:border-accent transition-all" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/awais-raza-3695b1418/" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-[#1A1A1A] border border-[#2A2A2A] flex items-center justify-center text-muted hover:text-white hover:border-accent transition-all" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="mailto:awaisrazaansari1111@gmail.com" class="w-10 h-10 rounded-full bg-[#1A1A1A] border border-[#2A2A2A] flex items-center justify-center text-muted hover:text-white hover:border-accent transition-all" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <!-- Form -->
+                    <div class="lg:col-span-3">
+                        <form id="contactForm" class="space-y-5" novalidate>
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div class="floating-label-group">
+                                    <input type="text" id="name" placeholder=" " required>
+                                    <label for="name">Your Name</label>
+                                    <p class="error-msg" id="nameError">Please enter your name.</p>
+                                </div>
+                                <div class="floating-label-group">
+                                    <input type="email" id="email" placeholder=" " required>
+                                    <label for="email">Email Address</label>
+                                    <p class="error-msg" id="emailError">Please enter a valid email address.</p>
+                                </div>
+                            </div>
+                            <div class="floating-label-group">
+                                <input type="text" id="subject" placeholder=" " required>
+                                <label for="subject">Subject</label>
+                                <p class="error-msg" id="subjectError">Please enter a subject.</p>
+                            </div>
+                            <div class="floating-label-group">
+                                <textarea id="message" rows="5" placeholder=" " required></textarea>
+                                <label for="message">Your Message</label>
+                                <p class="error-msg" id="messageError">Please enter your message.</p>
+                            </div>
+                            <button type="submit" id="submitBtn" class="w-full px-6 py-3.5 bg-gradient-to-br from-[#6C5CE7] to-[#00D2FF] rounded-full font-space font-semibold text-white hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300 hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                                <span id="submitText">Send Message</span>
+                                <span id="submitSpinner" class="hidden"><i class="fa-solid fa-spinner animate-spin"></i></span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                            <div id="formSuccess" class="hidden text-center py-4 px-6 bg-green-400/10 border border-green-400/30 rounded-xl text-green-400 font-space text-sm">
+                                <i class="fa-solid fa-circle-check mr-2"></i> Message sent successfully! I'll get back to you soon.
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="py-12 px-4 sm:px-6 lg:px-8 border-t border-[#1A1A1A] bg-[#0D0D0D]">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid sm:grid-cols-3 gap-8 mb-10">
+                    <div>
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#6C5CE7] to-[#00D2FF] flex items-center justify-center font-space font-bold text-xs text-white">AR</div>
+                            <span class="font-space font-semibold text-white">Awais Raza</span>
+                        </div>
+                        <p class="text-muted text-sm leading-relaxed">AI Engineer building intelligent systems from Lahore, Pakistan.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-space font-semibold text-white mb-3">Quick Links</h4>
+                        <nav class="flex flex-col gap-2 text-sm">
+                            <a href="#home" class="text-muted hover:text-white transition-colors">Home</a>
+                            <a href="#about" class="text-muted hover:text-white transition-colors">About</a>
+                            <a href="#skills" class="text-muted hover:text-white transition-colors">Skills</a>
+                            <a href="#projects" class="text-muted hover:text-white transition-colors">Projects</a>
+                            <a href="#contact" class="text-muted hover:text-white transition-colors">Contact</a>
+                        </nav>
+                    </div>
+                    <div>
+                        <h4 class="font-space font-semibold text-white mb-3">Connect</h4>
+                        <div class="flex gap-3">
+                            <a href="https://github.com/CodewithAwais05" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-[#1A1A1A] border border-[#2A2A2A] flex items-center justify-center text-muted hover:text-white hover:border-accent transition-all text-sm" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/awais-raza-3695b1418/" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-[#1A1A1A] border border-[#2A2A2A] flex items-center justify-center text-muted hover:text-white hover:border-accent transition-all text-sm" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="mailto:awaisrazaansari1111@gmail.com" class="w-9 h-9 rounded-full bg-[#1A1A1A] border border-[#2A2A2A] flex items-center justify-center text-muted hover:text-white hover:border-accent transition-all text-sm" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center pt-6 border-t border-[#1A1A1A]">
+                    <p class="text-muted text-xs font-mono">&copy; <span id="copyrightYear">2025</span> Muhammad Awais Raza. Built with <i class="fa-solid fa-heart text-red-400"></i> from Lahore.</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Back to Top -->
+    <button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="fa-solid fa-arrow-up text-white text-sm"></i>
     </button>
-  </div>
-</header>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#home" data-nav>Home</a>
-  <a href="#about" data-nav>About</a>
-  <a href="#skills" data-nav>Skills</a>
-  <a href="#github" data-nav>GitHub</a>
-  <a href="#projects" data-nav>Projects</a>
-  <a href="#experience" data-nav>Experience</a>
-  <a href="#contact" data-nav>Contact</a>
-</div>
+    <script>
+        // ============ PARTICLE CANVAS ============
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let targetMouseX = mouseX;
+        let targetMouseY = mouseY;
+        const particles = [];
+        const PARTICLE_COUNT = 120;
 
-<main id="main">
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-bg" id="heroBg"></div>
-    <div class="container hero-grid">
-      <div class="reveal in">
-        <div class="greet-row">
-          <div class="avatar"><img src="1.jpeg" alt="Awais Raza avatar" /></div>
-          <span class="greet-text mono">Hi, I am</span>
-        </div>
-        <h1>Awais Raza<span class="role-line grad-text">AI Engineer</span></h1>
-        <p class="lead">I build intelligent, algorithm-driven systems — on a foundation of strong C, C++ and Data Structures & Algorithms, not just prompt calls. Currently an AI undergraduate at UET Lahore, shipping real apps in public.</p>
-        <div class="hero-ctas">
-          <a href="#projects" class="btn btn-primary">View Projects</a>
-          <a href="Muhammad_Awais_Raza_Resume.pdf" class="btn btn-outline" id="resumeBtn2" target="_blank" rel="noopener" download>Download Resume</a>
-        </div>
-        <div class="tech-strip mono">
-          <span class="tech-chip"><i data-lucide="terminal"></i>C</span>
-          <span class="tech-chip"><i data-lucide="cpu"></i>C++</span>
-          <span class="tech-chip"><i data-lucide="git-branch"></i>DSA</span>
-          <span class="tech-chip"><i data-lucide="code-2"></i>HTML</span>
-          <span class="tech-chip"><i data-lucide="paintbrush"></i>CSS</span>
-          <span class="tech-chip"><i data-lucide="brain-circuit"></i>AI/ML</span>
-        </div>
-      </div>
-      <div class="hero-visual" id="heroVisual">
-        <div class="term-window">
-          <div class="term-bar">
-            <span class="term-dot" style="background:#E74C3C;"></span>
-            <span class="term-dot" style="background:#F1C40F;"></span>
-            <span class="term-dot" style="background:#2ECC71;"></span>
-            <span class="mono" style="font-size:12px;color:var(--muted);margin-left:8px;">binary_search.cpp</span>
-          </div>
-          <div class="term-body"><span id="typedCode"></span><span class="cursor-blink"></span></div>
-        </div>
-      </div>
-    </div>
-    <div class="scroll-cue"><span>SCROLL</span><i data-lucide="chevron-down"></i></div>
-  </section>
+        class Particle {
+            constructor() {
+                this.reset();
+                this.y = Math.random() * canvas.height;
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 0.8;
+                this.baseSize = this.size;
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.speedY = (Math.random() - 0.5) * 0.4;
+                this.opacity = Math.random() * 0.5 + 0.2;
+                this.hue = Math.random() < 0.5 ? 255 : 195; // purple-ish or cyan-ish
+                this.depth = Math.random(); // 0=far, 1=close
+                this.glowRadius = this.size * (2 + this.depth * 3);
+            }
+            update() {
+                // Mouse interaction
+                const dx = mouseX - this.x;
+                const dy = mouseY - this.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                const maxDist = 200;
+                if (dist < maxDist) {
+                    const force = (maxDist - dist) / maxDist;
+                    const angle = Math.atan2(dy, dx);
+                    const pushX = Math.cos(angle) * force * 1.8 * (1 - this.depth);
+                    const pushY = Math.sin(angle) * force * 1.8 * (1 - this.depth);
+                    this.x -= pushX;
+                    this.y -= pushY;
+                    this.size = this.baseSize + force * 2;
+                    this.opacity = Math.min(0.8, this.opacity + force * 0.3);
+                } else {
+                    this.size += (this.baseSize - this.size) * 0.05;
+                    this.opacity += (0.3 - this.opacity) * 0.02;
+                }
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-photo-wrap reveal">
-          <div class="about-photo">
-            <img src="2.jpeg" alt="Portrait of Awais Raza" />
-          </div>
-          <div class="stat-badge">
-            <div class="num">4+</div>
-            <div class="lbl">Active Projects</div>
-          </div>
-        </div>
-        <div class="reveal">
-          <div class="eyebrow">WHO I AM</div>
-          <h2>Engineering intelligence from first principles</h2>
-          <p style="color:var(--muted);margin-top:18px;font-size:16.5px;">
-            I'm an AI Engineer and undergraduate at the University of Engineering and Technology, Lahore, building toward
-            an AI/ML career the way I think it should be built: from the ground up. Before reaching for a model or an API,
-            I reach for a data structure — that habit shapes how I design software, debug it, and reason about its limits.
-            I currently split my time between shipping cross-platform AI apps, strengthening my algorithmic foundations,
-            and documenting the process publicly for other engineers on the same path.
-          </p>
-          <div class="quick-facts">
-            <div class="fact"><i data-lucide="user"></i><div><div class="k">NAME</div><div class="v">Awais Raza</div></div></div>
-            <div class="fact"><i data-lucide="briefcase"></i><div><div class="k">ROLE</div><div class="v">AI Engineer</div></div></div>
-            <div class="fact"><i data-lucide="target"></i><div><div class="k">FOCUS</div><div class="v">AI/ML · DSA · Systems</div></div></div>
-            <div class="fact"><i data-lucide="map-pin"></i><div><div class="k">LOCATION</div><div class="v">Lahore, Pakistan</div></div></div>
-            <div class="fact"><i data-lucide="mail"></i><div><div class="k">EMAIL</div><div class="v">awaisrazaansari1111@gmail.com</div></div></div>
-            <div class="fact"><i data-lucide="graduation-cap"></i><div><div class="k">STUDYING</div><div class="v">BS Artificial Intelligence</div></div></div>
-          </div>
-          <a href="Muhammad_Awais_Raza_Resume.pdf" class="btn btn-outline" id="resumeBtn3" target="_blank" rel="noopener" download><i data-lucide="download" style="width:16px;height:16px;"></i> Download CV</a>
-          <div class="stat-grid">
-            <div class="stat-card"><div class="count" data-count="4">0</div><div class="stat-lbl">Projects Shipped</div></div>
-            <div class="stat-card"><div class="count" data-count="150">0</div><div class="stat-lbl">DSA Problems Solved</div></div>
-            <div class="stat-card"><div class="count" data-count="5">0</div><div class="stat-lbl">Languages & Tools</div></div>
-            <div class="stat-card"><div class="count" data-count="2">0</div><div class="stat-lbl">Years Coding</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+                this.x += this.speedX * (0.5 + this.depth);
+                this.y += this.speedY * (0.5 + this.depth);
 
-  <!-- SKILLS -->
-  <section id="skills" style="background:var(--surface);">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="eyebrow">WHAT I KNOW</div>
-        <h2>Skills & Technologies</h2>
-        <p>The fundamentals I build everything else on top of.</p>
-      </div>
-      <div class="skills-grid">
-        <div class="skill-card reveal">
-          <div class="skill-icon"><i data-lucide="terminal"></i></div>
-          <h3>C</h3>
-          <p>Memory, pointers, and control flow — where I learned how computers actually work.</p>
-          <div class="bar-track"><div class="bar-fill" data-pct="85"></div></div>
-          <span class="bar-pct mono">85%</span>
-        </div>
-        <div class="skill-card reveal">
-          <div class="skill-icon"><i data-lucide="cpu"></i></div>
-          <h3>C++</h3>
-          <p>OOP, STL, and performance-minded systems programming for real applications.</p>
-          <div class="bar-track"><div class="bar-fill" data-pct="90"></div></div>
-          <span class="bar-pct mono">90%</span>
-        </div>
-        <div class="skill-card reveal">
-          <div class="skill-icon"><i data-lucide="git-branch"></i></div>
-          <h3>DSA</h3>
-          <p>Data Structures & Algorithms in C++ — the toolkit behind every efficient solution I ship.</p>
-          <div class="bar-track"><div class="bar-fill" data-pct="88"></div></div>
-          <span class="bar-pct mono">88%</span>
-        </div>
-        <div class="skill-card reveal">
-          <div class="skill-icon"><i data-lucide="brain-circuit"></i></div>
-          <h3>AI / Machine Learning</h3>
-          <p>Applied LLM integration, agentic app design, and foundational ML coursework.</p>
-          <div class="bar-track"><div class="bar-fill" data-pct="75"></div></div>
-          <span class="bar-pct mono">75%</span>
-        </div>
-        <div class="skill-card reveal">
-          <div class="skill-icon"><i data-lucide="code-2"></i></div>
-          <h3>HTML</h3>
-          <p>Semantic, accessible markup as the backbone of every interface I build.</p>
-          <div class="bar-track"><div class="bar-fill" data-pct="80"></div></div>
-          <span class="bar-pct mono">80%</span>
-        </div>
-        <div class="skill-card reveal">
-          <div class="skill-icon"><i data-lucide="paintbrush"></i></div>
-          <h3>CSS</h3>
-          <p>Responsive, animated layouts that make functional software feel polished.</p>
-          <div class="bar-track"><div class="bar-fill" data-pct="78"></div></div>
-          <span class="bar-pct mono">78%</span>
-        </div>
-        <div class="skill-card reveal">
-          <div class="skill-icon"><i data-lucide="smartphone"></i></div>
-          <h3>Flutter & Capacitor</h3>
-          <p>Cross-platform mobile apps backed by Firebase and native Android tooling.</p>
-          <div class="bar-track"><div class="bar-fill" data-pct="70"></div></div>
-          <span class="bar-pct mono">70%</span>
-        </div>
-        <div class="skill-card reveal">
-          <div class="skill-icon"><i data-lucide="sigma"></i></div>
-          <h3>Math for AI</h3>
-          <p>Calculus and Linear Algebra as the language underneath machine learning.</p>
-          <div class="bar-track"><div class="bar-fill" data-pct="72"></div></div>
-          <span class="bar-pct mono">72%</span>
-        </div>
-      </div>
-    </div>
-  </section>
+                if (this.x < -20) this.x = canvas.width + 20;
+                if (this.x > canvas.width + 20) this.x = -20;
+                if (this.y < -20) this.y = canvas.height + 20;
+                if (this.y > canvas.height + 20) this.y = -20;
+            }
+            draw() {
+                const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.glowRadius);
+                const color = this.hue === 255 ?
+                    `hsla(255, 75%, 65%, ${this.opacity})` :
+                    `hsla(195, 100%, 55%, ${this.opacity})`;
+                grad.addColorStop(0, color);
+                grad.addColorStop(1, 'transparent');
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.glowRadius, 0, Math.PI * 2);
+                ctx.fillStyle = grad;
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = color;
+                ctx.fill();
+            }
+        }
 
-  <!-- GITHUB ACTIVITY -->
-  <section id="github">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="eyebrow">LIVE FROM GITHUB</div>
-        <h2>GitHub Activity</h2>
-        <p>Pulled straight from my GitHub account — updates automatically as I commit.</p>
-      </div>
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            particles.push(new Particle());
+        }
 
-      <div class="github-grid reveal">
-        <img
-          class="github-img github-streak"
-          src="https://streak-stats.demolab.com/?user=CodewithAwais05&theme=dark&hide_border=true&background=1A1A1A&stroke=2A2A2A&ring=6C5CE7&fire=00D2FF&currStreakLabel=6C5CE7&sideLabels=A0A0A0&currStreakNum=FFFFFF&sideNums=FFFFFF&dates=A0A0A0"
-          alt="Awais Raza GitHub streak stats"
-          loading="lazy"
-        />
-      </div>
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            mouseX += (targetMouseX - mouseX) * 0.08;
+            mouseY += (targetMouseY - mouseY) * 0.08;
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            // Draw connections between nearby particles
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 100) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(108,92,231,${0.06 * (1 - dist/100)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
 
-      <div class="github-grid reveal">
-        <img
-          class="github-img github-calendar"
-          src="https://github-readme-activity-graph.vercel.app/graph?username=CodewithAwais05&theme=react-dark&bg_color=1A1A1A&color=A0A0A0&line=6C5CE7&point=00D2FF&hide_border=true&area=true"
-          alt="Awais Raza GitHub contribution graph"
-          loading="lazy"
-        />
-      </div>
+        document.addEventListener('mousemove', (e) => {
+            targetMouseX = e.clientX;
+            targetMouseY = e.clientY;
+        });
+        document.addEventListener('touchmove', (e) => {
+            targetMouseX = e.touches[0].clientX;
+            targetMouseY = e.touches[0].clientY;
+        }, { passive: true });
 
-      <div class="github-cta reveal">
-        <a href="https://github.com/CodewithAwais05" target="_blank" rel="noopener" class="btn btn-outline">
-          <i data-lucide="github" style="width:16px;height:16px;"></i> View Full GitHub Profile
-        </a>
-      </div>
-    </div>
-  </section>
+        // ============ NAVBAR SCROLL ============
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            if (scrollY > 30) {
+                navbar.classList.add('glass');
+                navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3)';
+            } else {
+                navbar.classList.remove('glass');
+                navbar.style.boxShadow = 'none';
+            }
+            if (scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+            // Scroll spy
+            updateActiveNav();
+        });
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="eyebrow">MY WORK</div>
-        <h2>Featured Projects</h2>
-        <p>Apps I've designed, built, and shipped — each one paired with its GitHub repository.</p>
-      </div>
-      <div class="filter-bar reveal">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="ai">AI Projects</button>
-        <button class="filter-btn" data-filter="dsa">DSA / Algorithms</button>
-        <button class="filter-btn" data-filter="web">Web / Mobile</button>
-      </div>
-      <div class="projects-grid" id="projectsGrid">
+        // ============ SCROLL SPY ============
+        function updateActiveNav() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('#desktopNav .nav-link');
+            let current = '';
+            sections.forEach(section => {
+                const top = section.offsetTop - 120;
+                if (window.scrollY >= top) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('text-white');
+                link.classList.add('text-muted');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.remove('text-muted');
+                    link.classList.add('text-white');
+                }
+            });
+        }
 
-        <article class="project-card reveal" data-cat="ai web">
-          <div class="proj-thumb"><div class="glyph"><i data-lucide="bot"></i></div></div>
-          <div class="proj-overlay">
-            <a class="icon-btn" data-tip="View code" href="https://github.com/CodewithAwais05/awais-ai/commit/810168f1fb05389a6ae56be3e8fba8e6ad9f4a2e" target="_blank" rel="noopener" aria-label="View Awais AI source code on GitHub"><i data-lucide="github"></i></a>
-            <a class="icon-btn" data-tip="View repo" href="https://github.com/CodewithAwais05/awais-ai" target="_blank" rel="noopener" aria-label="Awais AI repository (Android app — no browser demo)"><i data-lucide="arrow-up-right"></i></a>
-          </div>
-          <div class="proj-body">
-            <h3>Awais AI</h3>
-            <p>A Capacitor/Ionic Android chat app with dual Claude and Grok API support, built like a personal ChatGPT.</p>
-            <div class="tag-row"><span class="tag">AI</span><span class="tag">Ionic</span><span class="tag">Android</span></div>
-          </div>
-        </article>
+        // ============ MOBILE NAV ============
+        function toggleMobileNav() {
+            document.getElementById('mobileNav').classList.add('active');
+            document.getElementById('mobileOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
 
-        <article class="project-card reveal" data-cat="dsa">
-          <div class="proj-thumb"><div class="glyph"><i data-lucide="message-circle"></i></div></div>
-          <div class="proj-overlay">
-            <a class="icon-btn" data-tip="View repo" href="https://github.com/CodewithAwais05/CPP-Programming-Labs" target="_blank" rel="noopener" aria-label="View CPP Programming Labs on GitHub"><i data-lucide="github"></i></a>
-            <a class="icon-btn" data-tip="Manual" href="OOP_Manual.pdf" aria-label="CPP Programming Labs project details"><i data-lucide="arrow-up-right"></i></a>
-          </div>
-          <div class="proj-body">
-            <h3>CPP Programming Labs</h3>
-            <p>A collection of C++ programming exercises and labs for students to practice and improve their skills.</p>
-            <div class="tag-row"><span class="tag">C++</span><span class="tag">Programming</span><span class="tag">Education</span></div>
-          </div>
-        </article>
+        function closeMobileNav() {
+            document.getElementById('mobileNav').classList.remove('active');
+            document.getElementById('mobileOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.getElementById('mobileOverlay').addEventListener('click', closeMobileNav);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeMobileNav();
+        });
 
-        <article class="project-card reveal" data-cat="ai">
-          <div class="proj-thumb"><div class="glyph"><i data-lucide="square-terminal"></i></div></div>
-          <div class="proj-overlay">
-            <a class="icon-btn" data-tip="View repo" href="https://github.com/CodewithAwais05/QT-based-Ai-Chatbot" target="_blank" rel="noopener" aria-label="View QT-based AI Chatbot on GitHub"><i data-lucide="github"></i></a>
-            <a class="icon-btn" data-tip="README" href="https://github.com/CodewithAwais05/QT-based-Ai-Chatbot/blob/main/README.md" aria-label="QT-based AI Chatbot project details"><i data-lucide="arrow-up-right"></i></a>
-          </div>
-          <div class="proj-body">
-            <h3>QT-based AI Chatbot</h3>
-            <p>A C++ desktop AI chatbot built with Qt, powered by the Groq API — combining clean OOP design with a real, feature-rich conversational interface featuring secure login, voice input, image/file sharing, and persistent chat history.</p>
-            <div class="tag-row"><span class="tag">C++</span><span class="tag">AI</span></div>
-          </div>
-        </article>
-        <article class="project-card reveal" data-cat="ai">
-          <div class="proj-thumb"><div class="glyph"><i data-lucide="square-terminal"></i></div></div>
-          <div class="proj-overlay">
-            <a class="icon-btn" data-tip="View repo" href="https://github.com/CodewithAwais05/Nexus-AI-Chatbot" target="_blank" rel="noopener" aria-label="View Nexus AI Chatbot on GitHub"><i data-lucide="github"></i></a>
-            <a class="icon-btn" data-tip="Details" href="#" aria-label="Nexus AI Chatbot project details"><i data-lucide="arrow-up-right"></i></a>
-          </div>
-          <div class="proj-body">
-            <h3>Nexus AI Chatbot</h3>
-            <p>A C++ desktop console based chatbot integrated with the API — OOP design meets a real conversational interface.</p>
-            <div class="tag-row"><span class="tag">C++</span><span class="tag">AI</span></div>
-          </div>
-        </article>
+        // ============ REVEAL ON SCROLL ============
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        revealElements.forEach(el => revealObserver.observe(el));
 
-        <article class="project-card reveal" data-cat="ai web">
-          <div class="proj-thumb"><div class="glyph"><i data-lucide="sparkles"></i></div></div>
-          <div class="proj-overlay">
-            <a class="icon-btn" data-tip="View repo" href="https://github.com/CodewithAwais05/Ai-Virtual-Assistant" target="_blank" rel="noopener" aria-label="View AI Virtual Assistant source code on GitHub"><i data-lucide="github"></i></a>
-            <a class="icon-btn" data-tip="Live demo" href="https://codewithawais05.github.io/Ai-Virtual-Assistant/" target="_blank" rel="noopener" aria-label="Open AI Virtual Assistant live demo (runs the app in your browser)"><i data-lucide="arrow-up-right"></i></a>
-          </div>
-          <div class="proj-body">
-            <h3>AI Virtual Assistant</h3>
-            <p>A browser-based AI assistant with a full chat UI using Puter.js, deployed live on GitHub Pages.</p>
-            <div class="tag-row"><span class="tag">JavaScript</span><span class="tag">HTML/CSS</span><span class="tag">AI</span></div>
-          </div>
-        </article>
+        // Fallback: show all after 3 seconds
+        setTimeout(() => {
+            revealElements.forEach(el => el.classList.add('visible'));
+        }, 3000);
 
-        <article class="project-card reveal" data-cat="dsa">
-          <div class="proj-thumb"><div class="glyph"><i data-lucide="network"></i></div></div>
-          <div class="proj-overlay">
-            <a class="icon-btn" data-tip="View repo" href="https://github.com/CodewithAwais05/DSA-CPP" target="_blank" rel="noopener" aria-label="View DSA in C++ on GitHub"><i data-lucide="github"></i></a>
-            <a class="icon-btn" data-tip="README" href="https://github.com/CodewithAwais05/DSA-CPP/blob/main/README.md" target="_blank" rel="noopener" aria-label="View DSA in C++ README"><i data-lucide="arrow-up-right"></i></a>
-          </div>
-          <div class="proj-body">
-            <h3>DSA in C++</h3>
-            <p>A topic-organized repository of data structure and algorithm implementations, with a progress-tracking README.</p>
-            <div class="tag-row"><span class="tag">C++</span><span class="tag">DSA</span></div>
-          </div>
-        </article>
+        // ============ SKILL BARS ============
+        const skillBars = document.querySelectorAll('.skill-bar-fill');
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bar = entry.target;
+                    bar.style.width = bar.dataset.width + '%';
+                    skillObserver.unobserve(bar);
+                }
+            });
+        }, { threshold: 0.3 });
+        skillBars.forEach(bar => skillObserver.observe(bar));
 
-        <article class="project-card reveal" data-cat="web">
-          <div class="proj-thumb"><div class="glyph"><i data-lucide="file-text"></i></div></div>
-          <div class="proj-overlay">
-            <a class="icon-btn" data-tip="View Profile" href="https://github.com/CodewithAwais05" target="_blank" rel="noopener" aria-label="View more projects on GitHub"><i data-lucide="github"></i></a>
-            <a class="icon-btn" data-tip="Repositories" href="https://github.com/CodewithAwais05?tab=repositories" target="_blank" rel="noopener" aria-label="More projects details"><i data-lucide="arrow-up-right"></i></a>
-          </div>
-          <div class="proj-body">
-            <h3>More on GitHub</h3>
-            <p>Ongoing coursework projects, experiments, and the CodeWithAwais build-in-public archive.</p>
-            <div class="tag-row"><span class="tag">Various</span></div>
-          </div>
-        </article>
+        // ============ COUNT UP ============
+        const statElements = document.querySelectorAll('[data-count]');
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.dataset.count);
+                    const duration = 2000;
+                    const start = performance.now();
+                    function updateCount(timestamp) {
+                        const elapsed = timestamp - start;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        el.textContent = Math.floor(eased * target) + (target >= 100 ? '+' : '');
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            el.textContent = target + (target >= 100 ? '+' : '');
+                        }
+                    }
+                    requestAnimationFrame(updateCount);
+                    statObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        statElements.forEach(el => statObserver.observe(el));
 
-      </div>
-      <div class="view-all reveal">
-        <a href="https://github.com/CodewithAwais05" target="_blank" rel="noopener" class="btn btn-outline">
-          <i data-lucide="github" style="width:16px;height:16px;"></i> View All Projects on GitHub
-        </a>
-      </div>
-    </div>
-  </section>
+        // ============ TYPED TERMINAL ============
+        const terminalCode = document.getElementById('terminalCode');
+        const codeLines = [
+            '<span class="comment">// Binary Search Implementation in C++</span>',
+            '<span class="keyword">#include</span> <span class="string">&lt;iostream&gt;</span>',
+            '<span class="keyword">#include</span> <span class="string">&lt;vector&gt;</span>',
+            '',
+            '<span class="type">int</span> <span class="func">binarySearch</span>(<span class="type">const</span> std::vector&lt;<span class="type">int</span>&gt;& arr, <span class="type">int</span> target) {',
+            '    <span class="type">int</span> left = <span class="number">0</span>;',
+            '    <span class="type">int</span> right = arr.size() - <span class="number">1</span>;',
+            '',
+            '    <span class="keyword">while</span> (left <= right) {',
+            '        <span class="type">int</span> mid = left + (right - left) / <span class="number">2</span>;',
+            '',
+            '        <span class="keyword">if</span> (arr[mid] == target)',
+            '            <span class="keyword">return</span> mid;',
+            '        <span class="keyword">else if</span> (arr[mid] < target)',
+            '            left = mid + <span class="number">1</span>;',
+            '        <span class="keyword">else</span>',
+            '            right = mid - <span class="number">1</span>;',
+            '    }',
+            '    <span class="keyword">return</span> -<span class="number">1</span>;',
+            '}',
+            '',
+            '<span class="type">int</span> <span class="func">main</span>() {',
+            '    std::vector&lt;<span class="type">int</span>&gt; data = {<span class="number">2</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">12</span>, <span class="number">16</span>};',
+            '    <span class="type">int</span> result = <span class="func">binarySearch</span>(data, <span class="number">12</span>);',
+            '    std::cout &lt;&lt; <span class="string">"Found at index: "</span> &lt;&lt; result;',
+            '    <span class="keyword">return</span> <span class="number">0</span>;',
+            '}',
+        ];
 
-  <!-- EXPERIENCE -->
-  <section id="experience" style="background:var(--surface);">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="eyebrow">HOW I GOT HERE</div>
-        <h2>Experience</h2>
-        <p>A running log of what I've built and learned, in order.</p>
-      </div>
-      <div class="timeline">
-        <div class="tl-item reveal">
-          <div class="tl-dot"><i data-lucide="code"></i></div>
-          <div class="tl-date mono">Present</div>
-          <h3>Independent AI App Developer</h3>
-          <span class="tl-org">Self-directed / Build in Public</span>
-          <p>Designing and shipping cross-platform AI apps — including a dual-model (Claude + Grok) Android assistant and a Flutter/Firebase departmental chat app — while documenting the process on LinkedIn and GitHub.</p>
-        </div>
-        <div class="tl-item reveal">
-          <div class="tl-dot"><i data-lucide="pen-tool"></i></div>
-          <div class="tl-date mono"></div>
-          <h3>Technical Writer</h3>
-          <span class="tl-org">Technical Writing, UET Lahore</span>
-          <p>Authored a technical report comparing AI-assisted and traditional software development approaches, supervised within the AI undergraduate program.</p>
-          <a href="Technical_Report.pdf" target="_blank" rel="noopener" class="btn btn-ghost btn-sm" style="padding-left:0; margin-top:8px;">Read the report <i data-lucide="arrow-up-right" style="width:14px;height:14px;"></i></a>
-        </div>
-        <div class="tl-item reveal">
-          <div class="tl-dot"><i data-lucide="linkedin"></i></div>
-          <div class="tl-date mono">Present</div>
-          <h3>AI Content Creator</h3>
-          <span class="tl-org">LinkedIn</span>
-          <p>Ran a 30-day daily AI post series building public visibility around AI/ML learning.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+        let lineIndex = 0;
+        let charIndex = 0;
+        let currentHTML = '';
 
-  <!-- EDUCATION -->
-  <section id="education">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="eyebrow">FOUNDATIONS</div>
-        <h2>Education</h2>
-      </div>
-      <div class="timeline">
-        <div class="tl-item reveal">
-          <div class="tl-dot"><i data-lucide="graduation-cap"></i></div>
-          <div class="tl-date mono">2025 — Present</div>
-          <h3>BS Artificial Intelligence</h3>
-          <span class="tl-org">University of Engineering and Technology (UET), Lahore</span>
-          <p>Coursework spanning C++, OOP, Data Structures & Algorithms, Calculus, and Linear Algebra — the mathematical and computational base for applied AI.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+        function typeCode() {
+            if (lineIndex < codeLines.length) {
+                const line = codeLines[lineIndex];
+                if (charIndex < line.length) {
+                    // Handle HTML tags properly
+                    if (line[charIndex] === '<') {
+                        const closeBracket = line.indexOf('>', charIndex);
+                        if (closeBracket !== -1) {
+                            currentHTML += line.substring(charIndex, closeBracket + 1);
+                            charIndex = closeBracket + 1;
+                        } else {
+                            currentHTML += line[charIndex];
+                            charIndex++;
+                        }
+                    } else {
+                        currentHTML += line[charIndex];
+                        charIndex++;
+                    }
+                } else {
+                    currentHTML += '\n';
+                    lineIndex++;
+                    charIndex = 0;
+                }
+                terminalCode.innerHTML = currentHTML + '<span class="cursor-blink"></span>';
+                const delay = charIndex === 0 ? 80 + Math.random() * 60 : 15 + Math.random() * 30;
+                setTimeout(typeCode, delay);
+            } else {
+                terminalCode.innerHTML = currentHTML + '<span class="cursor-blink"></span>';
+                // Restart typing after a pause
+                setTimeout(() => {
+                    lineIndex = 0;
+                    charIndex = 0;
+                    currentHTML = '';
+                    typeCode();
+                }, 4000);
+            }
+        }
+        // Observe terminal to start typing when visible
+        const terminalObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && currentHTML === '') {
+                    typeCode();
+                    terminalObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        const heroTerminal = document.getElementById('heroTerminal');
+        if (heroTerminal) terminalObserver.observe(heroTerminal);
+        // Fallback
+        setTimeout(() => {
+            if (currentHTML === '') typeCode();
+        }, 2000);
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="eyebrow">GET IN TOUCH</div>
-        <h2>Let's Build Something Together</h2>
-        <p>Open to AI/ML internships, collaborations, and interesting problems.</p>
-      </div>
-      <div class="contact-grid">
-        <div class="reveal">
-          <div class="contact-info-item">
-            <div class="ico"><i data-lucide="mail"></i></div>
-            <div><div class="k">EMAIL</div><div class="v">awaisrazaansari1111@gmail.com</div></div>
-          </div>
-          <div class="contact-info-item">
-            <div class="ico"><i data-lucide="map-pin"></i></div>
-            <div><div class="k">LOCATION</div><div class="v">Lahore, Pakistan</div></div>
-          </div>
-          <div class="contact-info-item">
-            <div class="ico"><i data-lucide="graduation-cap"></i></div>
-            <div><div class="k">UNIVERSITY</div><div class="v">UET Lahore — AI Dept.</div></div>
-          </div>
-          <div class="social-row">
-            <a class="social-circle" href="https://github.com/CodewithAwais05" target="_blank" rel="noopener" aria-label="GitHub"><i data-lucide="github"></i></a>
-            <a class="social-circle" href="https://www.linkedin.com/in/awais-raza-3695b1418/" target="_blank" rel="noopener" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
-            <a class="social-circle" href="#" target="_blank" rel="noopener" aria-label="X / Twitter"><i data-lucide="twitter"></i></a>
-            <a class="social-circle" href="#" target="_blank" rel="noopener" aria-label="YouTube"><i data-lucide="youtube"></i></a>
-          </div>
-        </div>
-        <form class="contact-form reveal" id="contactForm" novalidate>
-          <div class="field" id="nameField">
-            <input type="text" id="nameInput" placeholder=" " autocomplete="name" />
-            <label for="nameInput">Name</label>
-            <div class="err-msg" role="alert" aria-live="polite"></div>
-          </div>
-          <div class="field" id="emailField">
-            <input type="email" id="emailInput" placeholder=" " autocomplete="email" />
-            <label for="emailInput">Email</label>
-            <div class="err-msg" role="alert" aria-live="polite"></div>
-          </div>
-          <div class="field" id="subjectField">
-            <input type="text" id="subjectInput" placeholder=" " />
-            <label for="subjectInput">Subject</label>
-            <div class="err-msg" role="alert" aria-live="polite"></div>
-          </div>
-          <div class="field" id="messageField">
-            <textarea id="messageInput" placeholder=" "></textarea>
-            <label for="messageInput">Message</label>
-            <div class="err-msg" role="alert" aria-live="polite"></div>
-          </div>
-          <div>
-            <button type="submit" class="btn btn-primary submit-btn" id="submitBtn">
-              <span class="spinner"></span>
-              <span class="btn-label">Send Message</span>
-            </button>
-            <div class="form-success" id="formSuccess"><i data-lucide="check-circle"></i> Message sent — I'll reply soon.</div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
+        // ============ PROJECT FILTERS ============
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'border-accent', 'bg-accent/10', 'text-white');
+                    b.classList.add('border-[#2A2A2A]', 'text-muted');
+                });
+                btn.classList.add('active', 'border-accent', 'bg-accent/10', 'text-white');
+                btn.classList.remove('border-[#2A2A2A]', 'text-muted');
+                const filter = btn.dataset.filter;
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category.includes(filter)) {
+                        card.style.display = '';
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
 
-</main>
+        // ============ CONTACT FORM ============
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const submitText = document.getElementById('submitText');
+        const submitSpinner = document.getElementById('submitSpinner');
+        const formSuccess = document.getElementById('formSuccess');
 
-<footer>
-  <div class="container">
-    <div class="footer-top">
-      <div>
-        <a href="#home" class="logo"><span class="logo-mark">AR</span> Awais Raza</a>
-        <p class="footer-tagline">AI Engineer building intelligent solutions on strong C/C++ and DSA fundamentals.</p>
-      </div>
-      <ul class="footer-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="social-row" style="margin-top:0;">
-        <a class="social-circle" href="https://github.com/CodewithAwais05" target="_blank" rel="noopener" aria-label="GitHub"><i data-lucide="github"></i></a>
-        <a class="social-circle" href="https://www.linkedin.com/in/awais-raza-3695b1418/" target="_blank" rel="noopener" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
-        <a class="social-circle" href="#" target="_blank" rel="noopener" aria-label="YouTube"><i data-lucide="youtube"></i></a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© <span id="year"></span> Awais Raza. All rights reserved.</span>
-    </div>
-  </div>
-</footer>
+        function showError(fieldId, errorId) {
+            document.getElementById(fieldId).classList.add('input-error');
+            document.getElementById(errorId).classList.add('visible');
+        }
 
-<button class="back-to-top" id="backToTop" aria-label="Back to top"><i data-lucide="arrow-up"></i></button>
+        function clearError(fieldId, errorId) {
+            document.getElementById(fieldId).classList.remove('input-error');
+            document.getElementById(errorId).classList.remove('visible');
+        }
 
-<script src="script.js"></script>
-</body>
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let valid = true;
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const subject = document.getElementById('subject');
+            const message = document.getElementById('message');
+
+            [name, email, subject, message].forEach(f => f.classList.remove('input-error'));
+            document.querySelectorAll('.error-msg').forEach(e => e.classList.remove('visible'));
+
+            if (!name.value.trim()) { showError('name', 'nameError');
+                valid = false; } else clearError('name', 'nameError');
+            if (!email.value.trim() || !validateEmail(email.value)) { showError('email', 'emailError');
+                valid = false; } else clearError('email', 'emailError');
+            if (!subject.value.trim()) { showError('subject', 'subjectError');
+                valid = false; } else clearError('subject', 'subjectError');
+            if (!message.value.trim()) { showError('message', 'messageError');
+                valid = false; } else clearError('message', 'messageError');
+
+            if (valid) {
+                submitText.textContent = 'Sending...';
+                submitSpinner.classList.remove('hidden');
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '0.7';
+                // Simulate submission
+                setTimeout(() => {
+                    submitText.textContent = 'Send Message';
+                    submitSpinner.classList.add('hidden');
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                    formSuccess.classList.remove('hidden');
+                    contactForm.reset();
+                    // Hide success after 5s
+                    setTimeout(() => formSuccess.classList.add('hidden'), 5000);
+                }, 1800);
+            }
+        });
+
+        // Clear errors on input
+        ['name', 'email', 'subject', 'message'].forEach(id => {
+            const el = document.getElementById(id);
+            el.addEventListener('input', () => {
+                el.classList.remove('input-error');
+                const errorEl = document.getElementById(id + 'Error');
+                if (errorEl) errorEl.classList.remove('visible');
+            });
+        });
+
+        // ============ COPYRIGHT YEAR ============
+        document.getElementById('copyrightYear').textContent = new Date().getFullYear();
+
+        // ============ INITIAL SCROLL STATE ============
+        if (window.scrollY > 30) {
+            navbar.classList.add('glass');
+            navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3)';
+        }
+        if (window.scrollY > 500) {
+            backToTop.classList.add('visible');
+        }
+        updateActiveNav();
+
+        console.log('%c🚀 Awais Raza Portfolio %cLoaded Successfully',
+            'color: #6C5CE7; font-size: 1.2em; font-weight: bold;',
+            'color: #00D2FF;');
+        console.log('%c💡 Built with vanilla HTML, CSS & JS — no frameworks.',
+            'color: #A0A0A0; font-style: italic;');
+    </script>
+
+    <script>
+      (function() {
+        function setupLinkInterceptor() {
+          document.addEventListener('click', function(e) {
+            var link = e.target.closest('a');
+            if (link) {
+              var href = link.getAttribute('href');
+              if (!href) return;
+              if (link.hasAttribute('download')) return;
+              if (link.target === '_blank') return;
+
+              // Resolve absolute URL
+              var resolvedUrl;
+              try {
+                resolvedUrl = new URL(link.href);
+              } catch(err) {
+                e.preventDefault();
+                return;
+              }
+
+              // Always prevent default navigation to stop the iframe from reloading or redirecting
+              e.preventDefault();
+
+              // Check if same origin (i.e. pointing to local app or relative paths)
+              if (resolvedUrl.origin === window.location.origin) {
+                var path = resolvedUrl.pathname;
+                var hash = resolvedUrl.hash;
+                var hashTarget = hash ? decodeURIComponent(hash.substring(1)) : '';
+
+                // If it is pointing to the home page or has no path and no hash
+                var isHome = path === '/' || path === '/index.html' || path.endsWith('/index.html') || path === '/workspace';
+                if (isHome && !hashTarget) {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  try { history.pushState(null, null, '#'); } catch(err) {}
+                  return;
+                }
+
+                // If it has a hash target
+                if (hashTarget) {
+                  var targetElement = document.getElementById(hashTarget) || document.querySelector('[name="' + hashTarget + '"]');
+
+                  // Fuzzy matching if exact target not found
+                  if (!targetElement) {
+                    var elements = document.querySelectorAll('[id]');
+                    for (var i = 0; i < elements.length; i++) {
+                      if (elements[i].id.toLowerCase() === hashTarget.toLowerCase()) {
+                        targetElement = elements[i];
+                        break;
+                      }
+                    }
+                  }
+
+                  if (!targetElement) {
+                    var sections = document.querySelectorAll('section, div, header, footer');
+                    for (var j = 0; j < sections.length; j++) {
+                      var id = (sections[j].id || '').toLowerCase();
+                      if (id && (id.indexOf(hashTarget.toLowerCase()) !== -1 || hashTarget.toLowerCase().indexOf(id) !== -1)) {
+                        targetElement = sections[j];
+                        break;
+                      }
+                    }
+                  }
+
+                  // Scroll if element found, or scroll to top if target is "home" / "top"
+                  if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                    try { history.pushState(null, null, hash); } catch(err) {}
+                  } else if (hashTarget.toLowerCase() === 'home' || hashTarget.toLowerCase() === 'top') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    try { history.pushState(null, null, '#'); } catch(err) {}
+                  }
+                }
+              } else if (link.target === '_blank') {
+                window.open(link.href, '_blank');
+              }
+            }
+          }, true);
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', setupLinkInterceptor);
+        } else {
+          setupLinkInterceptor();
+        }
+      })();
+    </script>
+
+  </body>
 </html>
